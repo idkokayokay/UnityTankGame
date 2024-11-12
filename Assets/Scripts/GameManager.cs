@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("In Start Game State");
         if (Input.GetKeyUp(KeyCode.Return) == true)
         {
+            m_AudioSource.clip = m_PlayingMusic;
+            m_AudioSource.Play();
             m_GameState = GameState.Playing;
             m_enemyTanksTxt.text = (m_Tanks.Length - 1).ToString();
             SetTanksEnable(true);
@@ -117,6 +119,8 @@ public class GameManager : MonoBehaviour
         if (isGameOver == true)
         {
             m_GameState = GameState.GameOver;
+            m_AudioSource.clip = m_GameOverMusic;
+            m_AudioSource.Play();
         }
 
         if (OneTankLeft() == true)
